@@ -17,9 +17,18 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=About}/{id?}");
+});
 
 app.UseAuthorization();
 
 app.MapRazorPages();
+//app.MapGet("/", () => "Hello, ASP.NET Core!");
+
+
 
 app.Run();
